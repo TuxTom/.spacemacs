@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name : Review protocol template
+# key : reviewtemplate
+# contributor : thkl2944
+# --
+----
+To be explained/fixed by implementor: | Fixed by reviewer:
+${1:# ${2:<finding>}}
+
+----
+TAG_REVIEWED|NO_SRC (Sourcecode/Demo/Other)
+TAG_REVIEWED|NO_TESTSRC (Test Sourcecode)
+TAG_REVIEWED|NO_TESTSPEC (Test Specification)
+TAG_REVIEWED|NO_DOC_CONTENT (User documentation)
+TAG_REVIEWED|NO_REQUIREMENTS (Requirements)
+TAG_REVIEWED|NO_RELNOTES (Releasenotes)
+TAG_REVIEWED|NO_NOTEWORTHY (Noteworthy)
+----

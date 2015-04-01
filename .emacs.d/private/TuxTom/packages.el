@@ -34,7 +34,6 @@ which require an initialization must be listed explicitly in the list.")
     evil-exchange
     evil-indent-textobject
     evil-numbers
-    evil-search-highlight-persist
     evil-terminal-cursor-changer
     exec-path-from-shell
     fancy-battery

@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name : jira
+# key : jira
+# --
+{{JiraIntTicket|${1:<ticket-ID>$(when yas-modified-p
+                      (prog1 (upcase yas-text)
+                             (when (and yas-moving-away-p (not (string-match-p "[A-Z]+-[0-9]+" yas-text)))
+                                   (yas-throw "Must be a valid JIRA key")
+                             )
+                      )
+                )}}} - ${2:<summary>$(unless yas-modified-p
+                                           (cdr (assoc 'summary (jiralib-get-issue (yas-field-value 1))))
+                                   )}
