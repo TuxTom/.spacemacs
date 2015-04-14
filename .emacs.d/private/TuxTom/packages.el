@@ -26,7 +26,6 @@ which require an initialization must be listed explicitly in the list.")
   '(
     ac-ispell
     ag
-    auto-complete-clang
     auto-dictionary
     base16-theme
     bookmark
@@ -37,7 +36,6 @@ which require an initialization must be listed explicitly in the list.")
     evil-terminal-cursor-changer
     exec-path-from-shell
     fancy-battery
-    fish-mode
     flyspell
     google-translate
     helm-ag
@@ -49,8 +47,6 @@ which require an initialization must be listed explicitly in the list.")
     monokai-theme
     move-text
     multi-term
-    rcirc
-    rcirc-color
     vi-tilde-fringe
     window-numbering
     zenburn-theme
@@ -70,6 +66,16 @@ which require an initialization must be listed explicitly in the list.")
 (defun TuxTom/init-docbook-snippets ()
   "Initialize docbook-snippets"
   (use-package docbook-snippets)
+  )
+
+(defun TuxTom/init-edbi ()
+  "Initialize docbook-snippets"
+  (use-package edbi)
+  )
+
+(defun TuxTom/init-edbi-sqlite ()
+  "Initialize docbook-snippets"
+  (use-package edbi-sqlite)
   )
 
 (defun TuxTom/init-hideshowvis ()

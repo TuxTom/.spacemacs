@@ -10,11 +10,17 @@
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
-   dotspacemacs-configuration-layers '(git
-                                       windows-scripts
-                                       markdown
-                                       company-mode
-                                       TuxTom)
+   dotspacemacs-configuration-layers
+   '(
+     (git
+      :variables git-enable-magit-svn-plugin t)
+     (auto-completion
+      :variables auto-completion-enable-company-help-tooltip t)
+     markdown
+     org
+     windows-scripts
+     syntax-checking
+     TuxTom)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -29,11 +35,21 @@ before layers configuration."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
+   ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
+   ;; is `emacs' then the `holy-mode' is enabled at startup.
+   dotspacemacs-editing-style 'vim
+   ;; If non nil output loading progess in `*Messages*' buffer.
+   dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. If the value is an integer then the
    ;; banner with the corresponding index is used, if the value is `random'
    ;; then the banner is chosen randomly among the available banners, if
    ;; the value is nil then no banner is displayed.
    dotspacemacs-startup-banner 1
+   ;; t if you always want to see the changelog at startup
+   dotspacemacs-always-show-changelog t
+   ;; List of items to show in the startup buffer. If nil it is disabled.
+   ;; Possible values are: `recents' `bookmarks' `projects'."
+   dotspacemacs-startup-lists '(recents projects)
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -52,12 +68,20 @@ before layers configuration."
    dotspacemacs-leader-key "SPC"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`
+   dotspacemacs-emacs-leader-key "M-m"
+   ;; Major mode leader key is a shortcut key which is the equivalent of
+   ;; pressing `<leader> m`. Set it to `nil` to disable it.
    dotspacemacs-major-mode-leader-key ","
+   ;; Major mode leader key accessible in `emacs state' and `insert state'
+   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; The command key used for Evil commands (ex-commands) and
    ;; Emacs commands (M-x).
    ;; By default the command key is `:' so ex-commands are executed like in Vim
    ;; with `:' and Emacs commands are executed with `<leader> :'.
    dotspacemacs-command-key ":"
+   ;; If non nil the paste micro-state is enabled. While enabled pressing `p`
+   ;; several times cycle between the kill ring content.
+   dotspacemacs-enable-paste-micro-state t
    ;; Guide-key delay in seconds. The Guide-key is the popup buffer listing
    ;; the commands bound to the current keystrokes.
    dotspacemacs-guide-key-delay 0.5
@@ -97,7 +121,6 @@ before layers configuration."
    dotspacemacs-default-package-repository nil)
 
   ;; User initialization goes here
-  (setq-default git-enable-magit-svn-plugin t)
   (setq evil-ex-substitute-global t)
   (setq evil-move-cursor-back nil)
 
@@ -131,6 +154,8 @@ This function is called at the very end of Spacemacs initialization."
   ;; (global-set-key (kbd "M-j") 'evil-window-down)
   ;; (global-set-key (kbd "M-k") 'evil-window-up)
   ;; (global-set-key (kbd "M-l") 'evil-window-right)
+
+  (global-company-mode)
 
   ;; to make the respective mappings for company-mode work
   (define-key evil-insert-state-map (kbd "C-k") nil)
@@ -222,6 +247,9 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-shift-width 2)
  '(evil-split-window-below t)
  '(evil-vsplit-window-right t)
+ '(magit-diff-options nil)
+ '(magit-emacsclient-executable "C:/Tools/emacs/emacs-24.4/bin/emacsclientw.exe")
+ '(magit-use-overlays nil)
  '(mediawiki-site-alist
    (quote
     (("Wikipedia" "http://en.wikipedia.org/w/" "username" "password" "Main Page")
